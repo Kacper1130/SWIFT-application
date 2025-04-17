@@ -14,12 +14,10 @@ public class SwiftCodeService {
 
     private final SwiftCodeRepository swiftCodeRepository;
     private final SwiftCodeMapper swiftCodeMapper;
-    private final CsvService csvService;
 
-    public SwiftCodeService(SwiftCodeRepository swiftCodeRepository, SwiftCodeMapper swiftCodeMapper, CsvService csvService) {
+    public SwiftCodeService(SwiftCodeRepository swiftCodeRepository, SwiftCodeMapper swiftCodeMapper) {
         this.swiftCodeRepository = swiftCodeRepository;
         this.swiftCodeMapper = swiftCodeMapper;
-        this.csvService = csvService;
     }
 
     public SwiftCodeDetailsDto getBySwiftCode(String code) {
@@ -84,7 +82,8 @@ public class SwiftCodeService {
     }
 
     public ResponseDto parseDataFromCsv() {
-        List<CsvSwiftCode> csvSwiftCodes = csvService.readCsvFile();
+        List<CsvSwiftCode> csvSwiftCodes = CsvService.read();
+        System.out.println("Zczytany rozmiar : " + csvSwiftCodes.size());
         List<SwiftCode> swiftCodes = csvSwiftCodes.stream().map(csvSwiftCode -> {
             SwiftCode swiftCode = new SwiftCode();
             swiftCode.setSwiftCode(csvSwiftCode.swiftCode());
@@ -99,6 +98,7 @@ public class SwiftCodeService {
             boolean isHeadquarter = csvSwiftCode.swiftCode().endsWith("XXX");
             swiftCode.setHeadquarter(isHeadquarter);
 
+            System.out.println("Processed SwiftCode: " + swiftCode.getSwiftCode());
             return swiftCode;
         }).toList();
 

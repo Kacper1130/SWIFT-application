@@ -3,20 +3,17 @@ package org.example.swiftcodesapplication;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import org.example.swiftcodesapplication.dto.CsvSwiftCode;
-import org.example.swiftcodesapplication.exception.ReadCsvException;
-import org.springframework.stereotype.Service;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
 public class CsvService {
 
     private static final String FILE_PATH = "src/main/resources/data.csv";
 
-    public List<CsvSwiftCode> readCsvFile() {
+    public static List<CsvSwiftCode> read() {
         List<CsvSwiftCode> swiftCodes = new ArrayList<>();
 
         try (
@@ -40,9 +37,9 @@ public class CsvService {
                 );
             }
         } catch (CsvValidationException e) {
-            throw new ReadCsvException("CSV validation error");
+            throw new RuntimeException("CSV validation error", e);
         } catch (IOException e) {
-            throw new ReadCsvException("I/O error while reading CSV");
+            throw new RuntimeException("I/O error while reading CSV", e);
         }
 
         return swiftCodes;

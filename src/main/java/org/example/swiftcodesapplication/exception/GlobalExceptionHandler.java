@@ -33,10 +33,4 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDto);
     }
 
-    @ExceptionHandler(ReadCsvException.class)
-    public ResponseEntity<ResponseDto> handleReadCsvException(ReadCsvException exception) {
-        ResponseDto responseDto = new ResponseDto(exception.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseDto);
-    }
-
 }

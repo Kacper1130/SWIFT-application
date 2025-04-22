@@ -41,6 +41,9 @@ POSTGRES_PASSWORD=your_password
 docker compose --env-file config.env up --build
 ```
 
+### 4. **Access the Application**
+Once the Docker containers are running, the API will be available at: `http://localhost:8080`
+
 ## API Endpoints
 
 ### Retrieve SWIFT Code Details

@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class CsvService {
 
-    private static final String FILE_PATH = "src/main/resources/data.csv";
+    private static final String FILE_PATH = "data.csv";
 
     public List<CsvSwiftCode> readCsvFile() {
         List<CsvSwiftCode> swiftCodes = new ArrayList<>();

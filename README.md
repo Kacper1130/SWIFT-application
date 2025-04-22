@@ -99,3 +99,11 @@ docker compose --env-file config.env up --build
 ### Load data from data.csv file 
 
 **POST** `/v1/swift-codes/load-data`
+
+## 🧪 Testing
+
+You can test endpoints using:
+- 🧪 Postman
+- 🔁 `curl`
+
+Make sure the app has parsed and stored some initial SWIFT data first.(use the **Load Data** endpoint)

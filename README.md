@@ -41,9 +41,9 @@ POSTGRES_PASSWORD=your_password
 docker compose --env-file config.env up --build
 ```
 
-## 📥 API Endpoints
+## API Endpoints
 
-### 🔍 Retrieve SWIFT Code Details
+### Retrieve SWIFT Code Details
 
 **GET** `/v1/swift-codes/{swift-code}`
 
@@ -53,7 +53,7 @@ docker compose --env-file config.env up --build
 
 ---
 
-### 🌍 Get SWIFT Codes by Country
+### Get SWIFT Codes by Country
 
 **GET** `/v1/swift-codes/country/{countryISO2code}`
 
@@ -61,7 +61,7 @@ docker compose --env-file config.env up --build
 
 ---
 
-### ➕ Add a New SWIFT Code
+### Add a New SWIFT Code
 
 **POST** `/v1/swift-codes`
 
@@ -85,7 +85,7 @@ docker compose --env-file config.env up --build
 }
 ```
 
-### ❌ Delete a SWIFT Code
+### Delete a SWIFT Code
 
 **DELETE** `/v1/swift-codes/{swift-code}`
 
@@ -95,3 +95,7 @@ docker compose --env-file config.env up --build
   "message": "SWIFT code deleted successfully."
 }
 ```
+
+### Load data from data.csv file 
+
+**POST** `/v1/swift-codes/load-data`
